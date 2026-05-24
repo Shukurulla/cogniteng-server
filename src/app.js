@@ -8,7 +8,9 @@ const { notFound, errorHandler } = require('./middleware/errorHandler');
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN?.split(',') || '*', credentials: true }));
+// CORS — open to all origins. `origin: true` reflects the request's Origin header,
+// which is required when credentials are sent (browsers reject "*" with credentials).
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
