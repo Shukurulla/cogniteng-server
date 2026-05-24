@@ -78,7 +78,7 @@ Quick local sanity check (before exposing publicly):
 ```bash
 node src/server.js
 # in another shell:
-curl -s http://127.0.0.1:5050/api/health
+curl -s http://127.0.0.1:9817/api/health
 # Ctrl+C the first shell
 ```
 
@@ -216,7 +216,7 @@ pm2 reload ecosystem.config.js
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `MongoDB connection error: Authentication failed` | Missing `?authSource=admin` in URI, or wrong password | Add it, or recheck with `mongosh "mongodb://root:PASS@127.0.0.1:27017/?authSource=admin"` |
-| `EADDRINUSE :5050` | Another process owns the port | `lsof -i :5050` → kill, or change `PORT` |
+| `EADDRINUSE :9817` | Another process owns the port | `lsof -i :9817` → kill, or change `PORT` |
 | `502 Bad Gateway` from nginx | PM2 process not running or crashed | `pm2 status`, `pm2 logs cogniteng-backend` |
 | Browser CORS error from your frontend | `CORS_ORIGIN` in `.env` doesn't include your frontend URL | Add it, `pm2 restart cogniteng-backend` |
 | Certbot fails with "Connection refused" | Port 80 is blocked by firewall | `ufw allow 80; ufw allow 443` |
