@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
     },
     language: {
       type: String,
-      enum: ['en', 'ru', 'uz'],
+      enum: ['en', 'uz', 'kk'],
       default: 'en',
     },
     refreshTokens: [{ type: String, select: false }],

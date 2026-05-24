@@ -4,7 +4,7 @@ const registerRules = [
   body('fullName').trim().notEmpty().withMessage('Full name is required').isLength({ max: 120 }),
   body('email').isEmail().withMessage('Valid email is required').normalizeEmail(),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
-  body('language').optional().isIn(['en', 'ru', 'uz']),
+  body('language').optional().isIn(['en', 'uz', 'kk']),
   body('teacherEmail').optional().isEmail().normalizeEmail(),
 ];
 
