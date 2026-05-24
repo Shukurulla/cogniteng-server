@@ -100,6 +100,8 @@ pm2 logs cogniteng-backend --lines 50     # check for errors
 ## 4. nginx (HTTP first; certbot adds SSL after)
 
 ```bash
+# IMPORTANT: copy WITH explicit destination filename (strips the .conf suffix)
+# so it matches the symlink name below
 cp deploy/nginx/cogniteng.kerek.uz.conf \
    /etc/nginx/sites-available/cogniteng.kerek.uz
 
@@ -111,6 +113,14 @@ rm -f /etc/nginx/sites-enabled/default
 
 nginx -t && systemctl reload nginx
 ```
+
+> If you mistakenly copied without renaming (file ended up as
+> `/etc/nginx/sites-available/cogniteng.kerek.uz.conf`), fix it with:
+> ```bash
+> mv /etc/nginx/sites-available/cogniteng.kerek.uz.conf \
+>    /etc/nginx/sites-available/cogniteng.kerek.uz
+> nginx -t && systemctl reload nginx
+> ```
 
 Test:
 ```bash
